@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>with-btn-load-more</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
+  </head>
+  <body>
+    <p class="go-back-btn"><a href="index.html">Go back</a></p>
+
+    <form class="search-form" id="search-form">
+      <input
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Search images..."
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <div class="gallery">
+      <!-- Картки зображень -->
+    </div>
+    <button type="button" class="load-more" style="display: none;">Load more</button>
+
+    <script src="./js/with-btn-load-more.js" type="module"></script>
+  </body>
+</html>
