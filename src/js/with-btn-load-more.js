@@ -11,14 +11,15 @@ const form = document.querySelector('#search-form');
 const galleryEl = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
 
-const AUTH_KEY = '35003886-1d9d7f8458bd91da816cc357a';
-const BASE_URL = 'https://pixabay.com/api/';
-
 let countOfImg = 0;
+
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
-});;
+});
+
+const AUTH_KEY = '35003886-1d9d7f8458bd91da816cc357a';
+const BASE_URL = 'https://pixabay.com/api/';
 
 const options = {
   params: {
@@ -41,7 +42,8 @@ loadMoreBtn.addEventListener('click', onLoadMoreImgs);
 function onSearchImgs(e) {
   e.preventDefault();
 
-  galleryEl.innerHTML = '';
+  scrollToStart();
+
   loadMoreBtn.style.display = 'none';
 
   options.params.q = form.elements.searchQuery.value.trim();
@@ -51,12 +53,17 @@ function onSearchImgs(e) {
   try {
     getImg(options).then(r => {
       if (r.data.hits.length === 0) {
+        clearGallery();
+
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
         return;
       }
       Notiflix.Notify.success(`Hooray! We found ${r.data.totalHits} images.`);
+
+      clearGallery();
+
       addImgsToGallery(r.data.hits);
 
       addCountOfImgs(r.data);
@@ -105,3 +112,13 @@ function addImgsToGallery(arrayOfImgs) {
   galleryEl.insertAdjacentHTML('beforeend', galleryItems(arrayOfImgs));
 }
 
+function clearGallery() {
+  galleryEl.innerHTML = '';
+}
+
+function scrollToStart() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}

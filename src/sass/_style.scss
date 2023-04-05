@@ -22,6 +22,19 @@ a {
   color: inherit;
 }
 
+.list__item:first-child {
+  margin-bottom: 30px;
+}
+
+.link__item {
+  padding: 10px;
+
+  color: #fafafa;
+  background-color: teal;
+  border: 1px solid rgb(12, 66, 66);
+  border-radius: 2px;
+}
+
 .go-back-btn {
   position: fixed;
   left: 10px;
