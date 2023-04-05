@@ -66,11 +66,13 @@ function onSearchImgs(e) {
 
       addImgsToGallery(r.data.hits);
 
+      loadMoreBtn.style.display = 'block';
+
       addCountOfImgs(r.data);
 
       lightbox.refresh();
 
-      loadMoreBtn.style.display = 'block';
+      
     });
   } catch (error) {
     console.error(error);
