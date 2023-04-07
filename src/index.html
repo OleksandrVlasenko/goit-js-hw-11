@@ -8,9 +8,31 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <ul>
-      <li class="list__item"><a class="link__item" href="./with-btn-load-more.html">With button "Load more"</a></li>
-      <li class="list__item"><a class="link__item" href="./with-infinity-scroll.html">With infinity scroll</a></li>
-    </ul>
+    <form class="search-form" id="search-form">
+      <div class="radio-btn__container">
+        <label
+          ><input type="radio" name="methodOfScroll" value="with-btn-load-more" checked />
+          With button "Load More"</label
+        >
+        <label
+          ><input type="radio" name="methodOfScroll" value="with-infinity-scroll" /> With
+          "Infinity scroll"</label
+        >
+      </div>
+      <input
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Search images..."
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <div class="gallery">
+    </div>
+    <button type="button" class="load-more" style="display: none">
+      Load more
+    </button>
+    <div id="sentinel"></div>
   </body>
 </html>
